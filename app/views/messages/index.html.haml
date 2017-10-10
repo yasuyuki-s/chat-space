@@ -1,1 +1,33 @@
-%p testmessage
+%header
+  %p チャットグループが作成されました
+.chat
+  .chat-side
+    .chat-user
+      %h5 yasuyuki
+    %ul.chat-groups
+      %li.chat-group
+        %p.chat-group__name aaaaaa
+        %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %p.chat-group__name bbbbbb
+        %p.chat-group__message まだメッセージはありません。
+  .chat-main
+    .chat-header
+      %h2 sampleグループ
+      %p Members: yasuyuki
+    .chat-body
+      %ul.chat-messages
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name yasuyuki
+            %p.chat-message__time 2017/10/10 08:20:00
+          %p.chat-message__body わああああい！
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name yasuyuki
+            %p.chat-message__time 2017/10/10 09:20:00
+          %p.chat-message__body やったああああ！
+    .chat-footer
+      %form
+        %textarea{row: "1", placeholder: "type a message"}
+        %input{type: "submit", value: "send"}
