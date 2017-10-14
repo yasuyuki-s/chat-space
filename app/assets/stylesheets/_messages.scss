@@ -4,7 +4,6 @@ html,body{
   height: 100%;
 }
 
-
 header{
   background-color: $color-notify;
   height: 24px;
@@ -12,11 +11,6 @@ header{
     color: $color-notify-font;
     text-align: center;
   }
-}
-
-a{
-  text-decoration: none;
-  color: $color-side-font;
 }
 
 .chat{
@@ -38,8 +32,11 @@ a{
       }
       &__icons{
         float: right;
+        a{
+          text-decoration: none;
+          color: $color-side-font;
+        }
       }
-
     }
     &__groups{
       background-color: $color-sidebody;
@@ -120,7 +117,6 @@ a{
           }
         }
       }
-
     }
     &__footer{
       background-color: $color-chatfooter;
@@ -133,7 +129,6 @@ a{
           width: calc(100% - 105px);
           background-color: $color-textwindow;
           textarea{
-            // float:left;
             resize: none;
             width: calc(100% - 40px);
             border-style: none;
@@ -154,8 +149,6 @@ a{
             font-size: 16px;
             width: 30px;
             margin-right: 10px;
-            font-family: FontAwesome;
-
           }
         }
         input#submit{
@@ -170,6 +163,5 @@ a{
         }
       }
     }
-
   }
 }
