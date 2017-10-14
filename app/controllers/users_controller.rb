@@ -4,9 +4,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params) if user.id == current_user.id
-    redirect_to :root
+    if current_user.update(user_params)
+      #updateに成功したとき
+      redirect_to :root
+    else
+      #updateに失敗したとき
+      render :edit
+    end
   end
 
   private
