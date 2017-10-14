@@ -4,7 +4,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true, unique: true|
-|mail|string|null: false, unique: true|
+|email|string|null: false, unique: true|
 
 ### Association
 - has_many :messages
