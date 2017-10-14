@@ -1,7 +1,61 @@
+
+
+html,body{
+  height: 100%;
+}
+
+
 header{
   background-color: $color-notify;
   p{
     color: $color-notify-font;
     text-align: center;
+  }
+}
+
+a{
+  text-decoration: none;
+  color: $color-side-font;
+}
+
+.chat{
+  height: 100%;
+  &__side{
+    float: left;
+    color: $color-side-font;
+    width: 300px;
+    height: 100%;
+    &__user{
+      padding: 40px 20px;
+      background-color: $color-sideheader;
+      @include clearfix;
+      &__name{
+        float: left;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      &__icons{
+        float: right;
+      }
+
+    }
+    &__groups{
+      height: 100%;
+      background-color: $color-sidebody;
+      li{
+        padding: 20px 20px;
+        .group-name{
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+        .group-message{
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  &__main{
+    float: left;
+    height: 100%;
   }
 }

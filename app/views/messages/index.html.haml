@@ -1,33 +1,38 @@
 %header
   %p チャットグループが作成されました
 .chat
-  .chat-side
-    .chat-user
-      %h5 yasuyuki
-    %ul.chat-groups
-      %li.chat-group
-        %p.chat-group__name aaaaaa
-        %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %p.chat-group__name bbbbbb
-        %p.chat-group__message まだメッセージはありません。
-  .chat-main
-    .chat-header
+  .chat__side
+    .chat__side__user
+      %h5.chat__side__user__name yasuyuki
+      .chat__side__user__icons
+        %a{href: ""}
+          %i.fa.fa-pencil-square-o
+        %a{href: ""}
+          %i.fa.fa-cog
+    %ul.chat__side__groups
+      %li
+        %p.group-name aaaaaa
+        %p.group-message まだメッセージはありません。
+      %li
+        %p.group-name bbbbbb
+        %p.group-message まだメッセージはありません。
+  .chat__main
+    .chat__main__header
       %h2 sampleグループ
       %p Members: yasuyuki
-    .chat-body
-      %ul.chat-messages
-        %li.chat-message
+    .chat__main__body
+      %ul.chat__main__body__messages
+        %li
           .chat-message__header
-            %p.chat-message__name yasuyuki
-            %p.chat-message__time 2017/10/10 08:20:00
+            %p.chat-message__header__name yasuyuki
+            %p.chat-message__header__time 2017/10/10 08:20:00
           %p.chat-message__body わああああい！
-        %li.chat-message
+        %li
           .chat-message__header
-            %p.chat-message__name yasuyuki
-            %p.chat-message__time 2017/10/10 09:20:00
-          %p.chat-message__body やったああああ！
-    .chat-footer
+            %p.chat-message__header__name yasuyuki
+            %p.chat-message__header__time 2017/10/10 09:20:00
+          %p.chat-message__body やったあああああ！
+    .chat__main__footer
       %form
         %textarea{row: "1", placeholder: "type a message"}
         %input{type: "submit", value: "send"}
