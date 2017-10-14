@@ -7,6 +7,7 @@ html,body{
 
 header{
   background-color: $color-notify;
+  height: 24px;
   p{
     color: $color-notify-font;
     text-align: center;
@@ -19,7 +20,7 @@ a{
 }
 
 .chat{
-  height: 100%;
+  height: calc(100% - 24px);
   &__side{
     float: left;
     color: $color-side-font;
@@ -27,6 +28,7 @@ a{
     height: 100%;
     &__user{
       padding: 40px 20px;
+      line-height: 16px;
       background-color: $color-sideheader;
       @include clearfix;
       &__name{
@@ -40,8 +42,8 @@ a{
 
     }
     &__groups{
-      height: 100%;
       background-color: $color-sidebody;
+      height: calc(100% - 96px);
       li{
         padding: 20px 20px;
         .group-name{
@@ -56,6 +58,118 @@ a{
   }
   &__main{
     float: left;
+    width:  calc(100vw - 300px);
     height: 100%;
+    &__header{
+      background-color: $color-chatheader;
+      padding: 0 40px;
+      height: 95px;
+      border-bottom: solid 1px $color-chat-border;
+      &__group{
+        float: left;
+        &__title{
+          padding-top: 35px;
+          padding-bottom: 15px;
+          font-size: 20px;
+          line-height: 20px;
+          color: $color-chatheader-font;
+        }
+        &__members{
+          font-size: 12px;
+          line-height: 12px;
+          color: $color-chat-subfont;
+        }
+      }
+      &__edit{
+        float: right;
+        margin-top:28px;
+        line-height: 16px;
+        padding: 11px 20px;
+        color: $color-button;
+        border: 1px solid $color-button;
+      }
+    }
+    &__body{
+      background-color: $color-chatbody;
+      padding-top: 46px;
+      padding-left: 40px;
+      padding-right: 40px;
+      height: calc(100% - 96px - 90px - 46px);
+      &__messages{
+        &__message{
+          padding-bottom: 40px;
+          &__name{
+            float: left;
+            font-size: 16px;
+            color: $color-chatbody-font;
+            font-weight: bold;
+            line-height: 16px;
+            padding-right: 10px;
+          }
+          &__time{
+            float: left;
+            font-size: 12px;
+            color: $color-chat-subfont;
+          }
+          &__body{
+            clear: both;
+            font-size: 14px;
+            color: $color-chatbody-font;
+            line-height: 14px;
+            padding-top: 10px;
+          }
+        }
+      }
+
+    }
+    &__footer{
+      background-color: $color-chatfooter;
+      height: 50px;
+      padding: 20px 40px;
+      form{
+        .form__window{
+          float: left;
+          height: 50px;
+          width: calc(100% - 105px);
+          background-color: $color-textwindow;
+          textarea{
+            // float:left;
+            resize: none;
+            width: calc(100% - 40px);
+            border-style: none;
+            &::-webkit-input-placeholder{
+              font-size: 16px;
+              line-height: 16px;
+              padding-left: 10px;
+              padding-top: 17px;
+              color: $color-chat-subfont;
+            }
+          }
+          button{
+            float: right;
+            border-style: none;
+            background-color: $color-textwindow;
+            height: 50px;
+            padding: 0;
+            font-size: 16px;
+            width: 30px;
+            margin-right: 10px;
+            font-family: FontAwesome;
+
+          }
+        }
+        input#submit{
+          float: left;
+          margin-left: 15px;
+          height: 50px;
+          width: 90px;
+          font-size: 16px;
+          background-color: $color-button;
+          color: $color-notify-font;
+          border-style: none;
+        }
+      }
+    }
+
   }
 }
