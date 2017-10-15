@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       #updateに成功したとき
-      redirect_to :root
+      redirect_to :root, notice: "ユーザー情報を更新しました"
     else
       #updateに失敗したとき
+      flash.now[:alert] = "更新処理にエラーが発生しました"
       render :edit
     end
   end
