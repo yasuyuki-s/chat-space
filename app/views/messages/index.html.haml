@@ -1,11 +1,11 @@
 .chat
   .chat__side
     .chat__side__user
-      %h5.chat__side__user__name yasuyuki
+      %h5.chat__side__user__name= current_user.name
       .chat__side__user__icons
         %a{href: ""}
           %i.fa.fa-pencil-square-o
-        %a{href: ""}
+        = link_to edit_user_path(current_user) do
           %i.fa.fa-cog
     %ul.chat__side__groups
       %li
