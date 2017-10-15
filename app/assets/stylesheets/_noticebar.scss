@@ -1,0 +1,12 @@
+.alert{
+  height: 24px;
+  color: $color-notice-font;
+  text-align: center;
+  &-notice{
+    background-color: $color-notice;
+  }
+  &-alert{
+    background-color: $color-alert;
+  }
+
+}

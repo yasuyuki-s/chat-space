@@ -4,17 +4,8 @@ html,body{
   height: 100%;
 }
 
-header{
-  background-color: $color-notify;
-  height: 24px;
-  p{
-    color: $color-notify-font;
-    text-align: center;
-  }
-}
-
 .chat{
-  height: calc(100% - 24px);
+  height: 100%;
   &__side{
     float: left;
     color: $color-side-font;
@@ -159,7 +150,7 @@ header{
           width: 90px;
           font-size: 16px;
           background-color: $color-button;
-          color: $color-notify-font;
+          color: $color-notice-font;
           border-style: none;
         }
       }
