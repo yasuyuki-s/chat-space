@@ -5,7 +5,7 @@
       .chat__side__user__icons
         %a{href: ""}
           %i.fa.fa-pencil-square-o
-        = link_to edit_user_path id: current_user.id do
+        = link_to edit_user_path(current_user) do
           %i.fa.fa-cog
     %ul.chat__side__groups
       %li
