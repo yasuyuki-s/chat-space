@@ -21,8 +21,10 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
+      #updateに成功したとき
       redirect_to :root, notice: "グループを編集しました"
     else
+      #updateに失敗したとき
       render :edit
     end
   end
