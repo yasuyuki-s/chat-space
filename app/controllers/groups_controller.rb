@@ -4,14 +4,12 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params)
-    if group.valid?
-      #バリデーションを通過した場合
-      group.save
+    @group = Group.new(group_params)
+    if @group.save
+      #グループの作成に成功したとき
       redirect_to :root, notice: "グループを作成しました"
     else
-      #バリデーションエラー発生時
-      @group = group
+      #グループの作成に失敗したとき
       render :new
     end
   end
