@@ -8,12 +8,10 @@
         = link_to edit_user_path(current_user) do
           %i.fa.fa-cog
     %ul.chat__side__groups
-      %li
-        %p.group-name aaaaaa
-        %p.group-message まだメッセージはありません。
-      %li
-        %p.group-name bbbbbb
-        %p.group-message まだメッセージはありません。
+      - current_user.groups.each do |group|
+        %li
+          %p.group-name= group.name
+          %p.group-message まだメッセージはありません。
   .chat__main
     .chat__main__header
       .chat__main__header__group
