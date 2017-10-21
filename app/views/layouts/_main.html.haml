@@ -19,6 +19,7 @@
             = l group_message.created_at, format: :short
           %p.chat__main__body__messages__message__body
             = group_message.body
+          = image_tag group_message.image.url if group_message.image?
   .chat__main__footer
     = form_for [group, message] do |f|
       .form__window
