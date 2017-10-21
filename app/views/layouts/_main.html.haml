@@ -23,6 +23,9 @@
     = form_for [group, message] do |f|
       .form__window
         = f.text_field :body, placeholder: "type a message"
-        %button
-          %i.fa.fa-picture-o
+        .image_button
+          = f.label :image do
+            %i.fa.fa-picture-o
+          = f.file_field :image
+          = f.hidden_field :image_cache
       = f.submit "Send", id: "submit"

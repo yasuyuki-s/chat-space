@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_group, only:[:index, :create]
+
   def index
     @message = Message.new
     @group_messages = @group.messages.order("created_at ASC")
@@ -19,7 +20,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body,:image).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:message).permit(:body, :image, :image_cache).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
   def set_group
