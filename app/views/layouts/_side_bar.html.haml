@@ -9,5 +9,6 @@
   %ul.chat__side__groups
     - current_user.groups.each do |group|
       %li
-        %p.group-name= group.name
+        %p.group-name
+          = link_to group.name, group_messages_path(group)
         %p.group-message まだメッセージはありません。

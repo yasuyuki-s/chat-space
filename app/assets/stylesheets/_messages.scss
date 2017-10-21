@@ -37,6 +37,15 @@ html,body{
         .group-name{
           font-size: 15px;
           margin-bottom: 5px;
+          a{
+            text-decoration:none;
+            &:link{
+              color: $color-side-font;
+            }
+            &:visited{
+              color: $color-side-font;
+            }
+          }
         }
         .group-message{
           font-size: 11px;
@@ -66,6 +75,13 @@ html,body{
           font-size: 12px;
           line-height: 12px;
           color: $color-chat-subfont;
+          p{
+            float: left;
+          }
+          &__member{
+            float: left;
+            padding-left: 5px;
+          }
         }
       }
       &__edit{
@@ -75,6 +91,15 @@ html,body{
         padding: 11px 20px;
         color: $color-button;
         border: 1px solid $color-button;
+        a{
+          text-decoration:none;
+          &:link{
+            color: $color-button;
+          }
+          &:visited{
+            color: $color-button;
+          }
+        }
       }
     }
     &__body{

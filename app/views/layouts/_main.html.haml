@@ -1,9 +1,14 @@
 .chat__main
   .chat__main__header
     .chat__main__header__group
-      %h2.chat__main__header__group__title sampleグループ
-      %p.chat__main__header__group__members Members: yasuyuki
-    %p.chat__main__header__edit Edit
+      %h2.chat__main__header__group__title= group.name
+      %ul.chat__main__header__group__members
+        %p Members：
+        - group.users.each do |member|
+          %li.chat__main__header__group__members__member
+            = member.name
+    %p.chat__main__header__edit
+      = link_to "Edit", edit_group_path(group)
   .chat__main__body
     %ul.chat__main__body__messages
       %li.chat__main__body__messages__message
