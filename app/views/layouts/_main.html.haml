@@ -20,9 +20,9 @@
         %p.chat__main__body__messages__message__time 2017/10/10 09:20:00
         %p.chat__main__body__messages__message__body やったああああ！
   .chat__main__footer
-    %form
+    = form_for [group, message] do |f|
       .form__window
-        %textarea{rows: "1", placeholder: "type a message"}
+        = f.text_field :body, placeholder: "type a message"
         %button
           %i.fa.fa-picture-o
-      %input#submit{type: "submit", value: "Send"}
+      = f.submit "Send", id: "submit"

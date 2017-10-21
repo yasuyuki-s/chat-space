@@ -144,10 +144,10 @@ html,body{
           height: 50px;
           width: calc(100% - 105px);
           background-color: $color-textwindow;
-          textarea{
+          #message_body{
             resize: none;
             font-size: 16px;
-            line-height: 16px;
+            height: 16px;
             padding-left: 10px;
             padding-top: 17px;
             padding-bottom: 17px;
