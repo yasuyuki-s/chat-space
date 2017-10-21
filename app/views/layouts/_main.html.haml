@@ -16,7 +16,7 @@
           %p.chat__main__body__messages__message__name
             = group_message.user.name
           %p.chat__main__body__messages__message__time
-            = group_message.created_at
+            = l group_message.created_at, format: :short
           %p.chat__main__body__messages__message__body
             = group_message.body
   .chat__main__footer
