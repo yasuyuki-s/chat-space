@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       redirect_to group_messages_path(@group)
     else
       #メッセージの作成に失敗したとき
-      render :index
+      redirect_to group_messages_path(@group), alert: "メッセージを入力してください。"
     end
   end
 
