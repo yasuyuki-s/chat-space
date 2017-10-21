@@ -11,18 +11,21 @@
       = link_to "Edit", edit_group_path(group)
   .chat__main__body
     %ul.chat__main__body__messages
-      %li.chat__main__body__messages__message
-        %p.chat__main__body__messages__message__name yasuyuki
-        %p.chat__main__body__messages__message__time 2017/10/10 08:20:00
-        %p.chat__main__body__messages__message__body わああああい！
-      %li.chat__main__body__messages__message
-        %p.chat__main__body__messages__message__name yasuyuki
-        %p.chat__main__body__messages__message__time 2017/10/10 09:20:00
-        %p.chat__main__body__messages__message__body やったああああ！
+      - group_messages.each do |group_message|
+        %li.chat__main__body__messages__message
+          %p.chat__main__body__messages__message__name
+            = group_message.user.name
+          %p.chat__main__body__messages__message__time
+            = l group_message.created_at, format: :short
+          %p.chat__main__body__messages__message__body
+            = group_message.body
+          = image_tag group_message.image.url if group_message.image?
   .chat__main__footer
-    %form
+    = form_for [group, message] do |f|
       .form__window
-        %textarea{rows: "1", placeholder: "type a message"}
-        %button
-          %i.fa.fa-picture-o
-      %input#submit{type: "submit", value: "Send"}
+        = f.text_field :body, placeholder: "type a message"
+        .image_button
+          = f.label :image do
+            %i.fa.fa-picture-o
+          = f.file_field :image
+      = f.submit "Send", id: "submit"
