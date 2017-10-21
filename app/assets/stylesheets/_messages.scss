@@ -103,6 +103,7 @@ html,body{
       }
     }
     &__body{
+      overflow: scroll;
       background-color: $color-chatbody;
       padding-top: 46px;
       padding-left: 40px;
