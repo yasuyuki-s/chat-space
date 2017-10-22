@@ -11,4 +11,12 @@
       %li
         %p.group-name
           = link_to group.name, group_messages_path(group)
-        %p.group-message まだメッセージはありません。
+        %p.group-message
+          - if group.messages.blank?
+            まだメッセージはありません。
+          - else
+            - latest = group.messages.order("created_at DESC")[0]
+            - if latest.body.blank?
+              画像が投稿されています
+            - else
+              = latest.body
