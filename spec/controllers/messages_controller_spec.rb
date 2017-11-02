@@ -61,7 +61,7 @@ describe MessagesController do
 
       context "failed validation" do
 
-        it "should not save message" do
+        it "should not save message if it has neither body nor image" do
           expect do
             post :create, params: {message: {body: "", image: "" }, group_id: group.id }
           end.to change(Message, :count).by(0)
