@@ -6,6 +6,9 @@ describe MessagesController do
   let(:messages) { create_list(:message, 3, user: user, group: group) }
   let(:message) { build(:message, user: user, group: group) }
 
+  let(:image_path) { File.join(Rails.root, 'spec/fixtures/image.jpg') }
+  let(:image) { Rack::Test::UploadedFile.new(image_path) }
+
   describe "GET #index" do
     context "logged in" do
       before do
@@ -46,14 +49,27 @@ describe MessagesController do
 
       context "passed validation" do
 
-        it "success to save message" do
+        it "success to save message if it has body and image" do
           expect do
-            post :create, params: {message: {body: message.body, image: message.image }, group_id: group.id }
+            post :create, params: {message: {body: message.body, image: image }, group_id: group.id }
+          end.to change(Message, :count).by(1)
+        end
+
+        it "success to save message if it has body without image" do
+          expect do
+            post :create, params: {message: {body: message.body, image: "" }, group_id: group.id }
+          end.to change(Message, :count).by(1)
+        end
+
+        it "success to save message if it has image without body" do
+          expect do
+            post :create, params: {message: {body: "", image: image }, group_id: group.id }
+
           end.to change(Message, :count).by(1)
         end
 
         it "renders the :index template" do
-          post :create, params: {message: {body: message.body, image: message.image }, group_id: group.id }
+          post :create, params: {message: {body: message.body, image: image }, group_id: group.id }
           expect(response).to redirect_to(group_messages_path(group))
         end
       end
@@ -83,7 +99,7 @@ describe MessagesController do
       end
 
       it "redirects to users/sign_in" do
-        post :create, params: {message: {body: message.body, image: message.image }, group_id: group.id }
+        post :create, params: {message: {body: message.body, image: image }, group_id: group.id }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
