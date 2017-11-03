@@ -1,10 +1,6 @@
 $(function(){
   var message_list = $(".chat__main__body__messages");
 
-  function ScrollToBottom(){
-    $(".chat__main__body").animate({scrollTop: message_list.height()}, "fast");
-  };
-
   function appendMessage(message){
     var html = `<li class="chat__main__body__messages__message">
                   <p class="chat__main__body__messages__message__name">
@@ -15,25 +11,13 @@ $(function(){
                   </p>
                   <p class="chat__main__body__messages__message__body">
                   ${ message.body }
-                  </p>
-                </li>`;
-    var htmlWithImage = `<li class="chat__main__body__messages__message">
-                          <p class="chat__main__body__messages__message__name">
-                          ${ message.name }
-                          </p>
-                          <p class="chat__main__body__messages__message__time">
-                          ${ message.created_at }
-                          </p>
-                          <p class="chat__main__body__messages__message__body">
-                          ${ message.body }
-                          </p>
-                          <img src="${ message.image }">
-                          </li>`;
+                  </p>`;
     if(message.image){
-      message_list.append(htmlWithImage);
+      html += `<img src="${ message.image }"></li>`;
     }else{
-      message_list.append(html);
+      html += `</li>`;
     };
+    message_list.append(html);
   };
 
   $("#new_message").on("submit", function(e){
@@ -53,7 +37,7 @@ $(function(){
       $("#message_body").val("");
       $("#message_image").val("");
       $("#submit").attr('disabled' , false);
-      ScrollToBottom();
+      $(".chat__main__body").animate({scrollTop: message_list.height()}, "fast");
     })
     .fail(function(){
       alert('error');
