@@ -2,7 +2,7 @@
   .chat__side__user
     %h5.chat__side__user__name= current_user.name
     .chat__side__user__icons
-      = link_to new_group_path do
+      = link_to  new_group_path, data: { turbolinks: false } do
         %i.fa.fa-pencil-square-o
       = link_to edit_user_path(current_user) do
         %i.fa.fa-cog
