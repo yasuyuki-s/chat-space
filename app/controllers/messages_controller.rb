@@ -10,7 +10,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save
       #メッセージの作成に成功したとき
-      redirect_to group_messages_path(@group)
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(@group) }
+        format.json
+      end
     else
       #メッセージの作成に失敗したとき
       redirect_to group_messages_path(@group), alert: "メッセージを入力してください。"
