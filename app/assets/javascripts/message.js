@@ -1,5 +1,6 @@
 $(function(){
   var message_list = $(".chat__main__body__messages");
+  var pre_messages_length;
 
   function appendMessage(message){
     var html = `<li class="chat__main__body__messages__message">
@@ -38,10 +39,36 @@ $(function(){
       $("#message_image").val("");
       $("#submit").attr('disabled' , false);
       $(".chat__main__body").animate({scrollTop: message_list.height()}, "fast");
+      pre_messages_length += 1;
     })
     .fail(function(){
       alert('error');
     });
   });
 
+  setInterval(function(){
+    if($("body").data("controller") == "messages" && $("body").data("action") == "index"){
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        processData: false,
+        contentType: false
+      })
+      .done(function(messages){
+        if (!pre_messages_length){
+          // initialize
+          pre_messages_length = messages.length;
+        }else if(messages.length !== pre_messages_length){
+          messages.forEach(function(message, index){
+            if(index + 1 > pre_messages_length) appendMessage(message);
+          });
+          $(".chat__main__body").animate({scrollTop: message_list.height()}, "fast");
+          pre_messages_length = messages.length;
+        };
+      })
+      .fail(function(){
+        alert('error');
+      });
+    };
+  },5000);
 });

@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @group_messages = @group.messages.order("created_at ASC")
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
