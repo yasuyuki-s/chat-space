@@ -8,7 +8,7 @@
           %li.chat__main__header__group__members__member
             = member.name
     %p.chat__main__header__edit
-      = link_to "Edit", edit_group_path(group)
+      = link_to "Edit", edit_group_path(group), data: { turbolinks: false }
   .chat__main__body
     %ul.chat__main__body__messages
       - group_messages.each do |group_message|
