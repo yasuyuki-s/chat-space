@@ -42,8 +42,8 @@ $(function(){
   });
 
   $(document).on("click", ".user-search-add" ,function(){
-    name = $(this).attr("data-user-name");
-    id = $(this).attr("data-user-id");
+    name = $(this).data("user-name");
+    id = $(this).data("user-id");
     appendMember(id,name);
     $(this).closest(".chat-group-user").remove();
   });
