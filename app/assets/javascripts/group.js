@@ -1,6 +1,7 @@
 $(function(){
   var search_list = $("#user-search-result");
   var member_list = $("#chat-group-users");
+  var preInput;
 
   function appendSearch(user) {
     var html = `<div class="chat-group-user clearfix">
@@ -21,25 +22,29 @@ $(function(){
 
   $("#user-search-field").on("keyup", function(){
     var input = $("#user-search-field").val();
-
-    $.ajax({
-      type: "GET",
-      url: "/users",
-      data: { keyword: input },
-      dataType: "json"
-    })
-    .done(function(users){
-      search_list.empty();
-      if(users.length !== 0){
-        users.forEach(function(user){
-          appendSearch(user);
-        });
-      };
-    })
-    .fail(function(){
-      alert("ユーザー検索に失敗しました");
-    });
+    if(input == "") search_list.empty();
+    if (input !== preInput && input !== ""){
+      $.ajax({
+        type: "GET",
+        url: "/users",
+        data: { keyword: input },
+        dataType: "json"
+      })
+      .done(function(users){
+        search_list.empty();
+        if(users.length !== 0){
+          users.forEach(function(user){
+            appendSearch(user);
+          });
+        };
+      })
+      .fail(function(){
+        alert("ユーザー検索に失敗しました");
+      });
+      preInput = input;
+    };
   });
+
 
   $(document).on("click", ".user-search-add" ,function(){
     name = $(this).data("user-name");
