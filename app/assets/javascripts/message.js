@@ -47,7 +47,7 @@ $(function(){
   });
 
   setInterval(function(){
-    if($("body").data("controller") == "messages" && $("body").data("action") == "index"){
+    if(location.href.match(/messages/)){
       $.ajax({
         type: "GET",
         dataType: "json",
